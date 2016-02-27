@@ -1,0 +1,281 @@
+27-Feb-2016 16:50:44.180 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.32
+27-Feb-2016 16:50:44.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 2 2016 19:34:53 UTC
+27-Feb-2016 16:50:44.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.32.0
+27-Feb-2016 16:50:44.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+27-Feb-2016 16:50:44.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.3
+27-Feb-2016 16:50:44.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+27-Feb-2016 16:50:44.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre
+27-Feb-2016 16:50:44.183 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_60-b27
+27-Feb-2016 16:50:44.183 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+27-Feb-2016 16:50:44.183 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:50:44.183 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:50:44.184 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/conf/logging.properties
+27-Feb-2016 16:50:44.184 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+27-Feb-2016 16:50:44.184 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/endorsed
+27-Feb-2016 16:50:44.184 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:50:44.184 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:50:44.184 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/temp
+27-Feb-2016 16:50:44.184 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/Nina/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+27-Feb-2016 16:50:44.378 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 16:50:44.415 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["http-nio-8080"]
+ java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.coyote.http11.AbstractHttp11JsseProtocol.init(AbstractHttp11JsseProtocol.java:120)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+27-Feb-2016 16:50:44.416 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[HTTP/1.1-8080]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 12 more
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.coyote.http11.AbstractHttp11JsseProtocol.init(AbstractHttp11JsseProtocol.java:120)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 13 more
+
+27-Feb-2016 16:50:44.417 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 16:50:44.418 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["ajp-nio-8009"]
+ java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+27-Feb-2016 16:50:44.419 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[AJP/1.3-8009]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[AJP/1.3-8009]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 12 more
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 13 more
+
+27-Feb-2016 16:50:44.419 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 696 ms
+27-Feb-2016 16:50:44.448 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+27-Feb-2016 16:50:44.449 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.32
+27-Feb-2016 16:50:44.459 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs
+27-Feb-2016 16:50:44.785 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs has finished in 326 ms
+27-Feb-2016 16:50:44.786 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples
+27-Feb-2016 16:50:45.244 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples has finished in 458 ms
+27-Feb-2016 16:50:45.245 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager
+27-Feb-2016 16:50:45.288 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager has finished in 43 ms
+27-Feb-2016 16:50:45.288 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager
+27-Feb-2016 16:50:45.319 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager has finished in 31 ms
+27-Feb-2016 16:50:45.320 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT
+27-Feb-2016 16:50:45.338 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT has finished in 17 ms
+27-Feb-2016 16:50:45.341 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 921 ms
+27-Feb-2016 16:50:45.349 SEVERE [main] org.apache.catalina.core.StandardServer.await StandardServer.await: create[localhost:8005]: 
+ java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:387)
+	at java.net.ServerSocket.bind(ServerSocket.java:375)
+	at java.net.ServerSocket.<init>(ServerSocket.java:237)
+	at org.apache.catalina.core.StandardServer.await(StandardServer.java:420)
+	at org.apache.catalina.startup.Catalina.await(Catalina.java:717)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:663)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+
+27-Feb-2016 16:50:45.350 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 16:50:45.350 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 16:50:45.350 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+27-Feb-2016 16:50:45.376 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 16:50:45.376 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 16:50:45.377 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 16:50:45.377 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 16:52:09.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.32
+27-Feb-2016 16:52:09.817 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 2 2016 19:34:53 UTC
+27-Feb-2016 16:52:09.817 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.32.0
+27-Feb-2016 16:52:09.817 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+27-Feb-2016 16:52:09.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.3
+27-Feb-2016 16:52:09.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+27-Feb-2016 16:52:09.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre
+27-Feb-2016 16:52:09.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_60-b27
+27-Feb-2016 16:52:09.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+27-Feb-2016 16:52:09.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:52:09.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:52:09.819 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/conf/logging.properties
+27-Feb-2016 16:52:09.819 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+27-Feb-2016 16:52:09.819 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/endorsed
+27-Feb-2016 16:52:09.819 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:52:09.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 16:52:09.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/temp
+27-Feb-2016 16:52:09.820 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/Nina/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+27-Feb-2016 16:52:09.969 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 16:52:09.994 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+27-Feb-2016 16:52:09.997 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 16:52:09.999 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+27-Feb-2016 16:52:09.999 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 552 ms
+27-Feb-2016 16:52:10.020 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+27-Feb-2016 16:52:10.020 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.32
+27-Feb-2016 16:52:10.027 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs
+27-Feb-2016 16:52:10.284 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs has finished in 257 ms
+27-Feb-2016 16:52:10.285 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples
+27-Feb-2016 16:52:10.580 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples has finished in 295 ms
+27-Feb-2016 16:52:10.581 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager
+27-Feb-2016 16:52:10.605 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager has finished in 24 ms
+27-Feb-2016 16:52:10.605 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager
+27-Feb-2016 16:52:10.627 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager has finished in 22 ms
+27-Feb-2016 16:52:10.627 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT
+27-Feb-2016 16:52:10.643 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT has finished in 16 ms
+27-Feb-2016 16:52:10.646 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 16:52:10.652 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 16:52:10.653 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 653 ms
+27-Feb-2016 16:53:20.679 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war
+27-Feb-2016 16:53:20.844 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war has finished in 165 ms
+27-Feb-2016 16:57:10.946 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/forum_bean]
+27-Feb-2016 16:57:10.984 INFO [localhost-startStop-3] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war
+27-Feb-2016 16:57:11.139 INFO [localhost-startStop-3] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war has finished in 155 ms
+27-Feb-2016 16:58:31.184 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/forum_bean]
+27-Feb-2016 16:58:31.199 INFO [localhost-startStop-4] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war
+27-Feb-2016 16:58:31.351 INFO [localhost-startStop-4] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war has finished in 152 ms
+27-Feb-2016 17:00:41.414 INFO [localhost-startStop-5] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+27-Feb-2016 17:00:41.545 INFO [localhost-startStop-5] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 130 ms
+27-Feb-2016 17:02:51.606 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean]
+27-Feb-2016 17:02:51.618 INFO [localhost-startStop-6] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+27-Feb-2016 17:02:51.746 INFO [localhost-startStop-6] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 128 ms
+27-Feb-2016 17:04:41.790 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean]
+27-Feb-2016 17:04:41.800 INFO [localhost-startStop-7] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+27-Feb-2016 17:04:41.926 INFO [localhost-startStop-7] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 125 ms
+27-Feb-2016 17:06:02.130 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+27-Feb-2016 17:06:02.131 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 17:06:02.185 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 17:06:02.236 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+27-Feb-2016 17:06:02.267 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 17:06:02.273 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 17:06:02.274 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 17:06:02.275 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 17:06:04.878 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.32
+27-Feb-2016 17:06:04.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 2 2016 19:34:53 UTC
+27-Feb-2016 17:06:04.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.32.0
+27-Feb-2016 17:06:04.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+27-Feb-2016 17:06:04.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.3
+27-Feb-2016 17:06:04.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+27-Feb-2016 17:06:04.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre
+27-Feb-2016 17:06:04.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_60-b27
+27-Feb-2016 17:06:04.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+27-Feb-2016 17:06:04.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 17:06:04.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 17:06:04.882 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/conf/logging.properties
+27-Feb-2016 17:06:04.882 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+27-Feb-2016 17:06:04.882 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/endorsed
+27-Feb-2016 17:06:04.882 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 17:06:04.882 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+27-Feb-2016 17:06:04.883 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/temp
+27-Feb-2016 17:06:04.883 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/Nina/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+27-Feb-2016 17:06:05.038 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 17:06:05.066 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+27-Feb-2016 17:06:05.069 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 17:06:05.071 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+27-Feb-2016 17:06:05.072 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 587 ms
+27-Feb-2016 17:06:05.094 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+27-Feb-2016 17:06:05.094 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.32
+27-Feb-2016 17:06:05.115 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war
+27-Feb-2016 17:06:05.436 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war has finished in 321 ms
+27-Feb-2016 17:06:05.437 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+27-Feb-2016 17:06:05.481 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 44 ms
+27-Feb-2016 17:06:05.482 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs
+27-Feb-2016 17:06:05.502 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs has finished in 20 ms
+27-Feb-2016 17:06:05.502 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples
+27-Feb-2016 17:06:05.960 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples has finished in 458 ms
+27-Feb-2016 17:06:05.960 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager
+27-Feb-2016 17:06:05.990 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager has finished in 30 ms
+27-Feb-2016 17:06:05.990 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager
+27-Feb-2016 17:06:06.015 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager has finished in 25 ms
+27-Feb-2016 17:06:06.016 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT
+27-Feb-2016 17:06:06.042 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT has finished in 26 ms
+27-Feb-2016 17:06:06.046 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+27-Feb-2016 17:06:06.053 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+27-Feb-2016 17:06:06.055 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 982 ms
+27-Feb-2016 17:08:06.109 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean]
+27-Feb-2016 17:08:06.147 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+27-Feb-2016 17:08:06.833 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 686 ms
+27-Feb-2016 17:15:07.146 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean]
+27-Feb-2016 17:15:07.156 INFO [localhost-startStop-3] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+27-Feb-2016 17:15:07.275 INFO [localhost-startStop-3] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 119 ms
