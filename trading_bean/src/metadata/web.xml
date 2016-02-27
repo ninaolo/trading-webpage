@@ -17,6 +17,6 @@
     <servlet-mapping>				   
       <servlet-name>TradingBean</servlet-name>	   
       <url-pattern>/Trading</url-pattern>		   
-    </servlet-mapping>				   
+    </servlet-mapping>	
 
 </web-app>

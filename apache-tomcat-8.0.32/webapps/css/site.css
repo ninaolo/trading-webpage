@@ -1,0 +1,118 @@
+
+html, body {
+  height: 100%; /* The html and body elements cannot have any padding or margin. */
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {overflow:auto;
+  padding-bottom: 180px;}  /* must be same height as the footer */
+
+#footer {
+  position: relative;
+  background-color: #f5f5f5;
+  margin-top: -180px; /* negative value of footer height */
+  height: 180px;
+  clear:both;
+  text-align: center;
+  padding-top: 20px;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+    padding-top: 120px;
+}
+
+h1 {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+}
+
+h2 {
+    font-family: "Quicksand", sans-serif;
+    color: #323232;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h4, a {
+    color: #323232;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.active {
+  color: #1FB18A;
+}
+
+a:hover, #navbar a:hover {
+  color: #1FB18A;
+  text-decoration: none;
+}
+
+/*
+ * Buttons
+ */
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #1FB18A;
+    border: none;
+}
+
+.btn-default {
+    width: 130px;
+}
+
+.btn-warning {
+    width: 160px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    background: #1B9172;
+    color: #ffffff;
+}
+
+/*
+ * Main content
+ */
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+#securities {
+  text-align: center;
+}
+
+#orders {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+
+#sidebar {
+  height: 500px;
+  overflow: scroll;
+  background-color: #f5f5f5;
+}
