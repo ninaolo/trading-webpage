@@ -26,16 +26,20 @@
 
 	<%@ page import="java.util.ArrayList" %>
 
-	<jsp:useBean class="bean.Forum" id="forum" scope="application"/>
+	<jsp:useBean class="bean.Trade" id="trade" scope="request"/>
 	<jsp:useBean class="bean.User" id="user" scope="session"/>
-	<jsp:useBean class="bean.Post" id="post" scope="request"/>
+	<jsp:useBean class="bean.Order" id="order" scope="request"/>
+	<jsp:useBean class="bean.Security" id="security" scope="request"/>
 
-	<jsp:setProperty name="forum" property="*"/>
+	<jsp:setProperty name="trade" property="*"/> <!-- VAD ÄR DETTA? -->
 	<jsp:setProperty name="user" property="*"/>
-	<jsp:setProperty name="post" property="*"/>
+	<jsp:setProperty name="order" property="*"/>
+	<jsp:setProperty name="security" property="*"/>
 
 	<div id="wrap">
 		<div id="main" class="container">
+
+		<!-- NAVIGATION BAR -->
 
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container-fluid">
@@ -51,8 +55,21 @@
 				</div>
 			</nav>
 
-			<% if(session.isNew()){ %>
+			<!-- CREATE USER -->
 
+			<% if(session.isNew()) { %>
+				<h1>Welcome!</h1>
+				<div class="row">
+					<form role="form">
+						<div class="form-group">
+							Nickname<input type="text" name="nickname" class="form-control">
+							Email<input type="text" name="email" class="form-control">
+						</div>
+						<button type="submit" id="user-btn" class="btn btn-primary">Create User</button>
+					</form>
+				</div>
+			
+			<% } else { %>
 
 			<div id="sidebar" class="col-xs-2">
 				<h4>Securities</h4>
@@ -83,21 +100,27 @@
 						</form>
 					</div>
 
-					<%
-				}
-				%>
-
+				</div>
 			</div>
-		</div>
 
-	</div>
-</div>
+			<div id="userbar" class="col-xs-2 col-xs-offset-2">
+				<h4>User information</h4>
+				<b>Nickname: </b><%=request.getParameter("nickname")%><br>
+				<b>Email: </b><%=request.getParameter("email")%>
+			</div>
+
+			<%
+			} %> <!-- END ELSE -->
+			
+
+		</div><!-- END MAIN -->
+	</div> <!-- END WRAP -->
 
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>

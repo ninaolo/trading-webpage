@@ -110,9 +110,14 @@ a:hover, #navbar a:hover {
   background-color: #f5f5f5;
 }
 
-
 #sidebar {
   height: 500px;
   overflow: scroll;
   background-color: #f5f5f5;
 }
+
+#userbar {
+  height: 200px;
+  background-color: #f5f5f5;
+}
+
