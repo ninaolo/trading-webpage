@@ -1,0 +1,19 @@
+Konfigurera Tomcat så att den kan kommunicera med din databas:
+
+1. ladda ner mysql-connector-java-5.1.38-bin.jar
+2. spara filen i din tomcat-applikations mapp under mappen "lib"
+3. lägg till följande i filen context.xml som finns i mappen conf i din tomcat-applikations mapp
+
+<Resource name="jdbc/LOGINNAME" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="??????" password="??????" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://mysql-vt2016.csc.kth.se:3306/LOGINNAME"/>
+
+4. byt username="??????" mot din adminusername som finns lagrad i  filen ~/Private/.mysqlpw.mysql-vt2016.se.
+5. byt LOGINNAME mot ditt användarnamn
+
+6. starta om tomcat genom ange följande kommando:
+> catalina.sh stop
+> catalina.sh start
+
+

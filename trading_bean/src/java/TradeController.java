@@ -22,10 +22,6 @@ public class TradeController extends HttpServlet {
 		// SET VARIABLES
 
 		try{
-			if(sc.getAttribute("forum") == null) {
-				sc.setAttribute("forum", new bean.Forum());
-			}
-
 			if(sc.getAttribute("trading_place") == null) {
 				sc.setAttribute("trading_place", new bean.TradingPlace());
 			}
@@ -83,13 +79,12 @@ public class TradeController extends HttpServlet {
 				out.println(ne.getMessage());
 			}
 
-			try {
-				RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp?message=" + message);
+			RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp");
+			try{
 				rd.forward(request, response);
-			} catch(ServletException e){
-				System.out.print(e.getMessage());
-			} catch(IOException e){
-				System.out.print(e.getMessage());
+			}
+			catch(Exception e){
+				out.println(e.getMessage());
 			}
 
 		}
@@ -106,6 +101,15 @@ public class TradeController extends HttpServlet {
 		}
 
 		out.close();
+
+
+		RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp");
+			try{
+				rd.forward(request, response);
+			}
+			catch(Exception e){
+				out.println(e.getMessage());
+			}
 
 	}
 }

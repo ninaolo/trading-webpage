@@ -29,44 +29,31 @@
 	<%@ page import="java.util.ArrayList" %>
 
 	<jsp:useBean class="bean.Forum" id="forum" scope="application"/>
-	<jsp:useBean class="bean.TradingPlace" id="tradingPlace" scope="application"/>
+	<jsp:useBean class="bean.TradingPlace" id="trading_place" scope="application"/>
 	<jsp:useBean class="bean.User" id="user" scope="session"/>
 
 	<div id="wrap">
 		<div id="main" class="container">
 
-			<h4><%= user.getNickname() %>(<%= user.getEmail() %>)</h4>
+			<h4>Name: <%= user.getNickname() %><br>Email: <%= user.getEmail() %></h4>
 
-			<% 
-			ArrayList posts = forum.getPosts();
-			pageContext.setAttribute("allPosts", posts);
-
-			ArrayList securities = tradingPlace.getSecurities();
+			<%
+			ArrayList securities = trading_place.getSecurities();
 			pageContext.setAttribute("allSecurities", securities);
-
 			%>
 
-			<c:forEach items="${allPosts}" var="current">
-			<br><c:out value="${current.nickname}" />: 
-			<c:out value="${current.text}" />
+
+			<div id="sidebar" class="col-xs-2">
+				<h4>Securities</h4>
+
+				<c:forEach items="${allSecurities}" var="current">
+				<br><c:out value="${current.name}" />: 
+				<c:out value="${current.type}" />
 			</c:forEach>
 
-			<c:forEach items="${allSecurities}" var="current">
-			<br><c:out value="${current.name}" />: 
-			<c:out value="${current.type}" />
-			</c:forEach>
+		</div>
 
-
-
-
-		<form action="/trading_bean/TradeController">
-			Text<input type="text" name="text"><br>
-			<input type="submit"></form>
-
-
-			<%=request.getParameter("message")%>
-
-
+		<div class="col-xs-6 col-xs-offset-2">
 			<h3>Add a security</h3>
 			<form action="/trading_bean/TradeController">
 				<input type="hidden" name="action" value="addSecurity">
@@ -74,33 +61,37 @@
 				<button type="submit" id="user-btn" class="btn btn-primary">Add</button>
 			</form>
 
-			<h3>Lägg en köp/säljorder på ett värdepapper</h3>
+			<h3>Make a buy/sell order on a security</h3>
 			<form action="/TradeController">
 				<input type="hidden" name="action" value="addOrder">
-				Värdepapper: <select name="security">
-				<option value="Ericsson">Ericsson</option>
-				<option value="Telia">Telia</option>
-				<option value="Volvo">Volvo</option>
-			</select><br>
-			Köp: <input type="radio" name="buyOrSell" value="B" checked>
-			Sälj: <input type="radio" name="buyOrSell" value="S"><br>
-			Pris: <input type="text" name="price" value=""><br>
-			Antal: <input type="text" name="amount" value=""><br>
-			<input type="submit" value="Utför">
-		</form>
+				Security: 
+				<select name="security">
+					<option value="Ericsson">Ericsson</option>
+					<option value="Telia">Telia</option>
+					<option value="Volvo">Volvo</option>
+				</select><br>
+				Buy: <input type="radio" name="buyOrSell" value="B" checked>
+				Sell: <input type="radio" name="buyOrSell" value="S"><br>
+				Price: <input type="text" name="price" value=""><br>
+				Amount: <input type="text" name="amount" value=""><br>
+				<button type="submit" class="btn btn-primary">Order</button>
+			</form>
 
-		<h3>Visa avslutade affärer i ett värdepapper</h3>
-		<form action="/TradeController">
-			<input type="hidden" name="action" value="viewTrades">
-			Värdepapper: <select name="security">
-			<option value="Ericsson">Ericsson</option>
-			<option value="Telia">Telia</option>
-			<option value="Volvo">Volvo</option>
-		</select><br>
-		<input type="submit" value="Utför">
-	</form>
+			<h3>Show finished trades for a security</h3>
+			<form action="/TradeController">
+				<input type="hidden" name="action" value="viewTrades">
+				Security:
+				<select name="security">
+					<option value="Ericsson">Ericsson</option>
+					<option value="Telia">Telia</option>
+					<option value="Volvo">Volvo</option>
+				</select><br>
+				<button type="submit" class="btn btn-primary">Show</button>
+			</form>
+		</div>
 
+	</div>
 </div>
-</div>
+
 </body>
 </html>
