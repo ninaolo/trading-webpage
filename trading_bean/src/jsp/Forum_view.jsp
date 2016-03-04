@@ -47,9 +47,8 @@
 				<h4>Securities</h4>
 
 				<c:forEach items="${allSecurities}" var="current">
-				<br><c:out value="${current.name}" />: 
-				<c:out value="${current.type}" />
-			</c:forEach>
+				<br><c:out value="${current.name}" />
+				</c:forEach>
 
 		</div>
 
@@ -66,9 +65,11 @@
 				<input type="hidden" name="action" value="addOrder">
 				Security: 
 				<select name="security">
-					<option value="Ericsson">Ericsson</option>
-					<option value="Telia">Telia</option>
-					<option value="Volvo">Volvo</option>
+
+					<c:forEach items="${allSecurities}" var="current">
+					<option value="${current.name}">${current.name}</option>
+					</c:forEach>
+
 				</select><br>
 				Buy: <input type="radio" name="buyOrSell" value="B" checked>
 				Sell: <input type="radio" name="buyOrSell" value="S"><br>
@@ -82,9 +83,9 @@
 				<input type="hidden" name="action" value="viewTrades">
 				Security:
 				<select name="security">
-					<option value="Ericsson">Ericsson</option>
-					<option value="Telia">Telia</option>
-					<option value="Volvo">Volvo</option>
+					<c:forEach items="${allSecurities}" var="current">
+					<option value="${current.name}">${current.name}</option>
+					</c:forEach>
 				</select><br>
 				<button type="submit" class="btn btn-primary">Show</button>
 			</form>
