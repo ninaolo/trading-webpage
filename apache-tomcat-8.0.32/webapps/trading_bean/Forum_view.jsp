@@ -52,8 +52,8 @@
 			</c:forEach>
 
 			<c:forEach items="${allSecurities}" var="current">
-			<br><c:out value="${current.getName()}" />: 
-			<c:out value="${current.getType()}" />
+			<br><c:out value="${current.name}" />: 
+			<c:out value="${current.type}" />
 			</c:forEach>
 
 

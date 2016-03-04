@@ -27,7 +27,7 @@ public class TradingPlace {
 		    String name = rs.getString("name");
 		    //String amount = rs.getString("amount");
 		    Security security = new Security();
-		    //order.setPrice(price);
+		    security.setName(name);
 		    //p.setText(amount);
 		    securities.add(security);
 		}
@@ -46,10 +46,10 @@ public class TradingPlace {
 		Connection conn = ds.getConnection();
 		Statement stmt = conn.createStatement();
 		String sql;
-		//String nickname=order.getNickname();
+		String name = security.getName();
 		//String text=order.getText();
-		//sql = "INSERT INTO orders VALUES ('"+nickname+"','"+text+"')";
-		//stmt.executeUpdate(sql);
+		sql = "INSERT INTO securities (name) VALUES ('"+ name +"')";
+		stmt.executeUpdate(sql);
 		stmt.close();
 		conn.close();
     }
