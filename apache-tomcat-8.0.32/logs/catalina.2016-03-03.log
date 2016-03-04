@@ -1,0 +1,270 @@
+03-Mar-2016 21:41:50.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.32
+03-Mar-2016 21:41:50.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 2 2016 19:34:53 UTC
+03-Mar-2016 21:41:50.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.32.0
+03-Mar-2016 21:41:50.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+03-Mar-2016 21:41:50.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.3
+03-Mar-2016 21:41:50.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+03-Mar-2016 21:41:50.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre
+03-Mar-2016 21:41:50.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_60-b27
+03-Mar-2016 21:41:50.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+03-Mar-2016 21:41:50.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:41:50.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:41:50.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/conf/logging.properties
+03-Mar-2016 21:41:50.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+03-Mar-2016 21:41:50.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/endorsed
+03-Mar-2016 21:41:50.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:41:50.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:41:50.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/temp
+03-Mar-2016 21:41:50.067 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/Nina/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+03-Mar-2016 21:41:50.274 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:41:50.314 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["http-nio-8080"]
+ java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.coyote.http11.AbstractHttp11JsseProtocol.init(AbstractHttp11JsseProtocol.java:120)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+03-Mar-2016 21:41:50.316 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[HTTP/1.1-8080]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 12 more
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.coyote.http11.AbstractHttp11JsseProtocol.init(AbstractHttp11JsseProtocol.java:120)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 13 more
+
+03-Mar-2016 21:41:50.316 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:41:50.318 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["ajp-nio-8009"]
+ java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+03-Mar-2016 21:41:50.318 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[AJP/1.3-8009]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[AJP/1.3-8009]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:568)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:580)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:603)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 12 more
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:458)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 13 more
+
+03-Mar-2016 21:41:50.319 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 737 ms
+03-Mar-2016 21:41:50.343 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+03-Mar-2016 21:41:50.343 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.32
+03-Mar-2016 21:41:50.366 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war
+03-Mar-2016 21:41:50.774 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:50.857 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war has finished in 490 ms
+03-Mar-2016 21:41:50.858 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+03-Mar-2016 21:41:51.002 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.009 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 151 ms
+03-Mar-2016 21:41:51.010 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/css
+03-Mar-2016 21:41:51.101 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.105 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/css has finished in 95 ms
+03-Mar-2016 21:41:51.105 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs
+03-Mar-2016 21:41:51.185 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.186 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs has finished in 81 ms
+03-Mar-2016 21:41:51.186 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples
+03-Mar-2016 21:41:51.441 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.489 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples has finished in 303 ms
+03-Mar-2016 21:41:51.489 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager
+03-Mar-2016 21:41:51.575 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.578 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager has finished in 89 ms
+03-Mar-2016 21:41:51.578 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/images
+03-Mar-2016 21:41:51.661 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.664 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/images has finished in 86 ms
+03-Mar-2016 21:41:51.664 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager
+03-Mar-2016 21:41:51.784 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.786 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager has finished in 122 ms
+03-Mar-2016 21:41:51.786 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT
+03-Mar-2016 21:41:51.861 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:41:51.863 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT has finished in 77 ms
+03-Mar-2016 21:41:51.866 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1547 ms
+03-Mar-2016 21:41:51.871 SEVERE [main] org.apache.catalina.core.StandardServer.await StandardServer.await: create[localhost:8005]: 
+ java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:387)
+	at java.net.ServerSocket.bind(ServerSocket.java:375)
+	at java.net.ServerSocket.<init>(ServerSocket.java:237)
+	at org.apache.catalina.core.StandardServer.await(StandardServer.java:420)
+	at org.apache.catalina.startup.Catalina.await(Catalina.java:717)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:663)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+
+03-Mar-2016 21:41:51.871 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:41:51.871 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:41:51.871 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+03-Mar-2016 21:41:52.006 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:41:52.007 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:41:52.007 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:41:52.007 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:43:02.393 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean]
+03-Mar-2016 21:43:02.413 INFO [localhost-startStop-19] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+03-Mar-2016 21:43:02.561 INFO [localhost-startStop-19] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:43:02.565 INFO [localhost-startStop-19] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 152 ms
+03-Mar-2016 21:45:25.098 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+03-Mar-2016 21:45:25.099 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:45:25.155 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:45:25.209 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+03-Mar-2016 21:45:25.243 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:45:25.246 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:45:25.247 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:45:25.247 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:45:28.280 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.32
+03-Mar-2016 21:45:28.282 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 2 2016 19:34:53 UTC
+03-Mar-2016 21:45:28.282 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.32.0
+03-Mar-2016 21:45:28.282 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+03-Mar-2016 21:45:28.282 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.3
+03-Mar-2016 21:45:28.282 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+03-Mar-2016 21:45:28.282 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre
+03-Mar-2016 21:45:28.283 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_60-b27
+03-Mar-2016 21:45:28.283 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+03-Mar-2016 21:45:28.283 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:45:28.283 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:45:28.284 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/conf/logging.properties
+03-Mar-2016 21:45:28.284 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+03-Mar-2016 21:45:28.284 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/endorsed
+03-Mar-2016 21:45:28.284 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:45:28.284 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32
+03-Mar-2016 21:45:28.284 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/temp
+03-Mar-2016 21:45:28.284 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/Nina/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+03-Mar-2016 21:45:28.441 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:45:28.471 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+03-Mar-2016 21:45:28.475 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:45:28.477 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+03-Mar-2016 21:45:28.477 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 582 ms
+03-Mar-2016 21:45:28.494 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+03-Mar-2016 21:45:28.494 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.32
+03-Mar-2016 21:45:28.515 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war
+03-Mar-2016 21:45:28.876 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:28.967 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/forum_bean.war has finished in 452 ms
+03-Mar-2016 21:45:28.967 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+03-Mar-2016 21:45:29.108 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.110 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 143 ms
+03-Mar-2016 21:45:29.112 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/css
+03-Mar-2016 21:45:29.210 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.213 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/css has finished in 101 ms
+03-Mar-2016 21:45:29.213 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs
+03-Mar-2016 21:45:29.298 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.300 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/docs has finished in 87 ms
+03-Mar-2016 21:45:29.300 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples
+03-Mar-2016 21:45:29.533 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.573 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/examples has finished in 273 ms
+03-Mar-2016 21:45:29.573 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager
+03-Mar-2016 21:45:29.666 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.670 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/host-manager has finished in 97 ms
+03-Mar-2016 21:45:29.670 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/images
+03-Mar-2016 21:45:29.774 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.778 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/images has finished in 108 ms
+03-Mar-2016 21:45:29.778 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager
+03-Mar-2016 21:45:29.884 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.886 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/manager has finished in 108 ms
+03-Mar-2016 21:45:29.886 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT
+03-Mar-2016 21:45:29.964 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:45:29.966 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/ROOT has finished in 80 ms
+03-Mar-2016 21:45:29.970 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+03-Mar-2016 21:45:29.976 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+03-Mar-2016 21:45:29.977 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1499 ms
+03-Mar-2016 21:46:30.006 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean2.war
+03-Mar-2016 21:46:30.105 INFO [localhost-startStop-2] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:46:30.108 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean2.war has finished in 102 ms
+03-Mar-2016 21:47:00.124 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean]
+03-Mar-2016 21:47:00.137 INFO [localhost-startStop-3] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+03-Mar-2016 21:47:00.270 INFO [localhost-startStop-3] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:47:00.953 INFO [localhost-startStop-3] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 816 ms
+03-Mar-2016 21:51:21.066 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean]
+03-Mar-2016 21:51:21.085 INFO [localhost-startStop-4] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war
+03-Mar-2016 21:51:21.156 INFO [localhost-startStop-4] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:51:21.257 INFO [localhost-startStop-4] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean.war has finished in 172 ms
+03-Mar-2016 21:51:31.263 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/trading_bean2]
+03-Mar-2016 21:51:31.270 INFO [localhost-startStop-5] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean2.war
+03-Mar-2016 21:51:31.347 INFO [localhost-startStop-5] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+03-Mar-2016 21:51:31.349 INFO [localhost-startStop-5] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /Users/Nina/git/trading-webpage/apache-tomcat-8.0.32/webapps/trading_bean2.war has finished in 79 ms

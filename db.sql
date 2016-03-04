@@ -1,4 +1,4 @@
-use stene; # Byt till din egen
+use ninaolo; # Byt till din egen
 
 drop table securities; # Radera om redan finns
 drop table orders;

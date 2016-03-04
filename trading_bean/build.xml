@@ -32,9 +32,10 @@
 
   <target name="war" depends="comp">
     <war destfile="${war-file-name}" webxml="src/metadata/web.xml">
-      <fileset dir="src/jsp"/>
       <classes dir="build/"/>
-
+      <fileset dir="src/jsp" />
+      <fileset dir="src/html" />
+      <lib dir="thirdparty/jstl-libs" />
       <manifest>
 	<attribute name="Built-By" value="${author}" />
 	<attribute name="Built-On" value="${build-info.current-date}" />
