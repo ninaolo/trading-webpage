@@ -10,14 +10,18 @@ import java.util.ArrayList;
 
 public class TradeController extends HttpServlet {
     
-    public void doGet(HttpServletRequest request,HttpServletResponse response)
-	throws IOException{
+    public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
 	
 	PrintWriter out = response.getWriter();
 	ServletContext sc = getServletContext();
+
 	try{
-	    if(sc.getAttribute("forum")==null){
-		sc.setAttribute("forum", new bean.Forum());
+	    if(sc.getAttribute("forum")==null) {
+			sc.setAttribute("forum", new bean.Forum());
+	    }
+
+	   	if(sc.getAttribute("trading_place")==null) {
+			sc.setAttribute("trading_place", new bean.TradingPlace());
 	    }
 	}
 		catch(SQLException e){		
@@ -40,9 +44,7 @@ public class TradeController extends HttpServlet {
 	    }
 	}
 	
-	
-	
-	if(request.getParameter("email")!=null){
+	if(request.getParameter("email")!=null) {
 	    bean.User u = (bean.User)session.getAttribute("user");
 	    u.setNickname(request.getParameter("nickname"));
 	    u.setEmail(request.getParameter("email"));
@@ -55,7 +57,7 @@ public class TradeController extends HttpServlet {
 	    }
 	}
 	
-	if(request.getParameter("text")!=null){
+	if(request.getParameter("text")!=null) {
 	    bean.User u = (bean.User)session.getAttribute("user");
 	    bean.Forum f = (bean.Forum)sc.getAttribute("forum");
 	    bean.Post p = new bean.Post();
@@ -77,6 +79,29 @@ public class TradeController extends HttpServlet {
 		out.println(ne.getMessage());
 	    }
 	}
+
+	if(request.getParameter("security")!=null) {
+	    bean.User u = (bean.User)session.getAttribute("user");
+	    bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
+	    bean.Security s = new bean.Security();
+	    s.setName(request.getParameter("security"));
+	    s.setType("stock");
+
+	    try {
+			t.addSecurity(s);
+			RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp");
+			rd.forward(request, response);
+
+	    } catch(ServletException e1){
+			out.println(e1.getMessage());
+	    } catch(SQLException e){
+			out.println(e.getMessage());
+	    } catch(NamingException ne){
+			out.println(ne.getMessage());
+	    }
+	}
+
 	out.close();
+
     }
 }
