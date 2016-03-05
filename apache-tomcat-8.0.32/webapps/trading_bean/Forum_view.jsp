@@ -54,14 +54,18 @@
 			<%
 			ArrayList securities = trading_place.getSecurities();
 			pageContext.setAttribute("allSecurities", securities);
+
+			ArrayList orders = trading_place.getOrders();
+			pageContext.setAttribute("allOrders", securities);
+
 			%>
 
 
 			<div id="sidebar" class="col-xs-2">
 				<h4>All Securities</h4>
 
-				<c:forEach items="${allSecurities}" var="current">
-				<br><c:out value="${current.name}" />
+				<c:forEach items="${allOrders}" var="order">
+				<br><c:out value="${order.type}" />
 				</c:forEach>
 
 			</div>

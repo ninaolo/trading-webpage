@@ -37,7 +37,12 @@ public class TradeController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session.isNew()){
-			session.setAttribute("user", new bean.User());
+
+			bean.User u = new bean.User();
+			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
+			session.setAttribute("user", u);
+			t.addUser(u);
+
 
 			RequestDispatcher rd = sc.getRequestDispatcher("/Forum_index.html");
 			try{
@@ -91,21 +96,20 @@ public class TradeController extends HttpServlet {
 		if(request.getParameter("action").equals("addOrder") && request.getParameter("price") != "" && request.getParameter("amount") != "") {
 		    // Kod för att lägga en köp eller säljorder
 		    // samt eventuellt skapa en trade
+		    bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
 			String type = request.getParameter("buyOrSell");
 			String securityName = request.getParameter("security");
 			int price = Integer.parseInt(request.getParameter("price"));
 			int amount = Integer.parseInt(request.getParameter("amount"));
 
-			bean.Security s = new bean.Security();
-			s.setName(securityName);
+			bean.Security s = t.getSecurity(securityName);
 
 			bean.Order o = new bean.Order();
 			o.setType(type);
 			o.setSecurity(s);
 			o.setQuantity(amount);
 			o.setPrice(price);
-
-			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
+			o.setSecurity(s);
 
 			try {
 				t.addOrder(o);
