@@ -31,7 +31,6 @@ public class TradeController extends HttpServlet {
 			out.println(ne.getMessage());
 		}
 
-		String message = "";
 
 		// NEW SESSION
 
@@ -39,6 +38,7 @@ public class TradeController extends HttpServlet {
 		
 		if(session.isNew()){
 			session.setAttribute("user", new bean.User());
+
 			RequestDispatcher rd = sc.getRequestDispatcher("/Forum_index.html");
 			try{
 				rd.forward(request, response);
@@ -63,13 +63,12 @@ public class TradeController extends HttpServlet {
 
 		// CHECK ACTIONS
 
-		if(request.getParameter("action").equals("addSecurity")){
+		if(request.getParameter("action").equals("addSecurity") && request.getParameter("security") != "") {
 			bean.User u = (bean.User)session.getAttribute("user");
 			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
 			bean.Security s = new bean.Security();
 			s.setName(request.getParameter("security"));
 			s.setType("stock");
-			message = "addSecurity";
 
 			try {
 				t.addSecurity(s);
@@ -89,15 +88,56 @@ public class TradeController extends HttpServlet {
 
 		}
 		
-		if(request.getParameter("action").equals("addOrder")){
+		if(request.getParameter("action").equals("addOrder") && request.getParameter("price") != "" && request.getParameter("amount") != "") {
 		    // Kod för att lägga en köp eller säljorder
 		    // samt eventuellt skapa en trade
-			message = "addOrder";
+			String type = request.getParameter("buyOrSell");
+			String securityName = request.getParameter("security");
+			int price = Integer.parseInt(request.getParameter("price"));
+			int amount = Integer.parseInt(request.getParameter("amount"));
+
+			bean.Security s = new bean.Security();
+			s.setName(securityName);
+
+			bean.Order o = new bean.Order();
+			o.setType(type);
+			o.setSecurity(s);
+			o.setQuantity(amount);
+			o.setPrice(price);
+
+			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
+
+			try {
+				t.addOrder(o);
+			} catch(SQLException e) {
+				out.println(e.getMessage());
+			} catch(NamingException ne){		
+				out.println(ne.getMessage());
+			}
+
+			RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp");
+			try {
+				rd.forward(request, response);
+			} catch(Exception e) {
+				out.println(e.getMessage());
+			}
+
 		}
 
 		if(request.getParameter("action").equals("viewTrades")){
 		    // Kod för att lägga en köp eller säljorder
-			message = "viewTrades";
+
+			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
+
+		    //ArrayList orders = t.getOrders();
+		    //sc.setAttribute("ordersForSecurity", orders);
+
+		    RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp");
+			try {
+				rd.forward(request, response);
+			} catch(Exception e) {
+				out.println(e.getMessage());
+			}
 		}
 
 		out.close();

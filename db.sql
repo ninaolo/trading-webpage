@@ -12,7 +12,7 @@ create table securities (
 
 create table orders (
 	id int NOT NULL AUTO_INCREMENT,
-       name varchar(64),
+       name varchar(64) NOT NULL UNIQUE,
        type varchar(64),
        price float,
        amount int,

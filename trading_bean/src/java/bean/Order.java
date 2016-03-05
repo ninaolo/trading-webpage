@@ -16,7 +16,7 @@ public class Order {
         this.type = type;
     }
 
-    public void SetSecurity(Security security) {
+    public void setSecurity(Security security) {
         this.security = security;
     }
 

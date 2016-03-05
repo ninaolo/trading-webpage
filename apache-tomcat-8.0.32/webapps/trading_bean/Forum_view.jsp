@@ -28,14 +28,28 @@
 <body>
 	<%@ page import="java.util.ArrayList" %>
 
-	<jsp:useBean class="bean.Forum" id="forum" scope="application"/>
 	<jsp:useBean class="bean.TradingPlace" id="trading_place" scope="application"/>
 	<jsp:useBean class="bean.User" id="user" scope="session"/>
 
 	<div id="wrap">
 		<div id="main" class="container">
 
-			<h4>Name: <%= user.getNickname() %><br>Email: <%= user.getEmail() %></h4>
+
+		<!-- NAVIGATION BAR -->
+
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="">Home</a></li>
+					</ul>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href=""><%=user.getNickname()%></a></li>
+							<li><a href=""><%=user.getEmail()%></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 
 			<%
 			ArrayList securities = trading_place.getSecurities();
@@ -44,24 +58,24 @@
 
 
 			<div id="sidebar" class="col-xs-2">
-				<h4>Securities</h4>
+				<h4>All Securities</h4>
 
 				<c:forEach items="${allSecurities}" var="current">
 				<br><c:out value="${current.name}" />
 				</c:forEach>
 
-		</div>
+			</div>
 
-		<div class="col-xs-6 col-xs-offset-2">
-			<h3>Add a security</h3>
-			<form action="/trading_bean/TradeController">
-				<input type="hidden" name="action" value="addSecurity">
-				<input type="text" name="security"><br>
-				<button type="submit" id="user-btn" class="btn btn-primary">Add</button>
-			</form>
+			<div class="col-xs-4 col-xs-offset-2">
+				<h3>Add a security</h3>
+				<form action="/trading_bean/TradeController">
+					<input type="hidden" name="action" value="addSecurity">
+					<input type="text" name="security"><br>
+					<button type="submit" id="user-btn" class="btn btn-primary">Add</button>
+				</form>
 
 			<h3>Make a buy/sell order on a security</h3>
-			<form action="/TradeController">
+			<form action="/trading_bean/TradeController">
 				<input type="hidden" name="action" value="addOrder">
 				Security: 
 				<select name="security">
@@ -71,18 +85,18 @@
 					</c:forEach>
 
 				</select><br>
-				Buy: <input type="radio" name="buyOrSell" value="B" checked>
-				Sell: <input type="radio" name="buyOrSell" value="S"><br>
+				Buy: <input type="radio" name="buyOrSell" value="buy" checked>
+				Sell: <input type="radio" name="buyOrSell" value="sell"><br>
 				Price: <input type="text" name="price" value=""><br>
 				Amount: <input type="text" name="amount" value=""><br>
 				<button type="submit" class="btn btn-primary">Order</button>
 			</form>
 
 			<h3>Show finished trades for a security</h3>
-			<form action="/TradeController">
+			<form action="/trading_bean/TradeController">
 				<input type="hidden" name="action" value="viewTrades">
 				Security:
-				<select name="security">
+				<select name="showSecurity">
 					<c:forEach items="${allSecurities}" var="current">
 					<option value="${current.name}">${current.name}</option>
 					</c:forEach>
@@ -90,6 +104,17 @@
 				<button type="submit" class="btn btn-primary">Show</button>
 			</form>
 		</div>
+
+		<div class="col-xs-2 col-xs-offset-2">
+		<h3><%=request.getParameter("showSecurity")%></h3><br>
+			<div id="orderbar">
+				<h4>Orders</h4>
+			</div>
+			<div id="tradebar">
+				<h4>Trades</h4>
+			</div>
+		</div>
+
 
 	</div>
 </div>
