@@ -10,6 +10,14 @@ public class Order {
 
     public Order() {}
 
+    public Order(Order order,int quantity){
+        this.type = order.type;
+        this.security = order.security;
+        this.quantity = quantity;
+        this.price = order.price;
+        this.user = order.user;
+    }
+
     // Setters
 
     public void setType(String type) {

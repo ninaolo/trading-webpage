@@ -10,7 +10,7 @@ public class TradingPlace {
     
     //private ArrayList orders;
     //private ArrayList trades;
-    private ArrayList securities;
+    private ArrayList<Security> securities;
     private HashMap<Integer, User> users;
     private Integer userIdCount = 0;
     private HashMap<Security, ArrayList<Order>> orders;
@@ -34,16 +34,35 @@ public class TradingPlace {
 		    String name = rs.getString("name");
 		    //String amount = rs.getString("amount");
 		    Security security = new Security();
-		    orders.put(security,new ArrayList<Order>());
-		    trades.put(security,new ArrayList<Trade>());
 		    security.setName(name);
 		    //p.setText(amount);
 		    securities.add(security);
 		}
 
+        for(int i=0;i<securities.size();i++){
+            Security s = securities.get(i);
+            sql = "SELECT name, type, price, amount, uid FROM orders WHERE name="+"'"+s.getName()+"'";
+            rs = stmt.executeQuery(sql);
+            ArrayList<Order> temp = new ArrayList<Order>();
+            Order tempOrder;
+            while(rs.next()){
+                tempOrder = new Order();
+                tempOrder.setSecurity(s);
+                tempOrder.setQuantity(Integer.parseInt(rs.getString("quantity")));
+                tempOrder.setPrice(Integer.parseInt(rs.getString("price")));
+                tempOrder.setType(rs.getString("type"));
+                temp.add(tempOrder);
+            }
+            orders.put(s,temp);
+        }
+
 		rs.close();
 		stmt.close();
 		conn.close();
+    }
+
+    public static void addAllOrders(){
+
     }
 
 
@@ -71,7 +90,10 @@ public class TradingPlace {
 
     public void addOrder(Order order) throws SQLException, NamingException {
     	Security security = order.getSecurity();
-    	orders.get(security).add(order); // nullpointer
+
+        ArrayList<Order> temp = orders.get(security);
+        temp.add(order);
+        orders.put(security,temp);
 
     	Context initCtx = new InitialContext();
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -82,64 +104,66 @@ public class TradingPlace {
             + order.getSecurity().getName() + "', '"
             + order.getType() + "', "
             + order.getPrice() + ", "
-            + order.getQuantity() + ", "
-            + order.getUser().getID() + ")";
+            + order.getQuantity() + ")";
+        //    + order.getUser().getID() + ")";
 		stmt.executeUpdate(sql);
 		stmt.close();
 		conn.close();
+
+
+        ArrayList<Trade> tempTrades = trades.get(security);
+        Trade trade = getPossibleTrade(security);
+        while(trade!=null){
+            tempTrades.add(trade);
+            trade = getPossibleTrade(security);
+        }
+        trades.put(security,tempTrades);
     }
 
     public Security getSecurity(String name){
-    	/*for(Security s : securities) {
+    	for(int i = 0;i<securities.size();i++) {
+            Security s = securities.get(i);
     		if(s.getName().equals(name)){
     			return s;
     		}
-    	}*/
+    	}
     	return null;
     }
 
 
     public Trade getPossibleTrade(Security security){
-    	/*ArrayList security_orders = getOrders(security);
+    	ArrayList<Order> security_orders = orders.get(security);
     	Order buyOrder = null;
     	Order sellOrder = null;
     	Order tempOrder;
     	Trade trade;
-    	for(int buy = 0;buy<security_orders.size();buy++){
-    		tempOrder = security_orders.get(i);
-    		if(buyOrder==null&&tempOrder.getType().equals("Buy")){
-    			buyOrder = tempOrder;
-    		}
-    		for(int sell=0;sell<security_orders.size();sell++){
-    			tempOrder = security_orders.get(i);
-				if(sellOrder==null&&tempOrder.getType().equals("Sell")){
-    				buyOrder = tempOrder;
-    		}
-    		if(possibleTrade(sellOrder,buyOrder)){
-    			if(sellOrder.getQuantity()==buyOrder.getQuantity()){
-    				trade = new Trade();
-    				trade.setOrder(buyOrder,sellOrder);
-    				security_orders.remove(Math.max(buy,sell));
-    				security_orders.remove(Math.min(buy,sell));
-    				return trade;
-    			} 
+        int sell = -1;
+        int buy = -1;
+        for(int i=0;i<security_orders.size();i++){
+            if(security_orders.get(i).getType().equals("Sell")){
+                sell = i;
+            }
+            else{
+                buy = i;
+            }
+        }
 
-    		} else{
-    			sellOrder = null;
-    		}
-    		}
-    		buyOrder = null;
+        if(sell==-1||buy==-1){
+            return null;
+        }
 
-    	}*/
-    	return null;
-    }
-
-    public boolean possibleTrade(Order sell,Order buy){
-    	if(sell==null||buy==null){
-    		return false;
-    	}
-    	return ((sell.getQuantity()==buy.getQuantity())&&(sell.getPrice()==buy.getPrice()));
-
+        buyOrder = security_orders.get(buy);
+        sellOrder = security_orders.get(sell);
+        trade = new Trade();
+        trade.setOrders(buyOrder,sellOrder);
+        Order newOrder = trade.getRest();
+        security_orders.remove(Math.max(buy,sell));
+        security_orders.remove(Math.min(buy,sell));
+        if(newOrder!=null){
+            security_orders.add(newOrder);
+        }
+        orders.put(security,security_orders);
+        return trade;
     }
 
 

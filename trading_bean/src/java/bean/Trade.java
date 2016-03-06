@@ -18,6 +18,22 @@ public class Trade {
         this.sellOrder = sellOrder;
     }
 
+    public Order getRest(){
+        if(this.buyOrder.getQuantity()==this.sellOrder.getQuantity()){
+            return null;
+        }
+        else{
+            Order order;
+            int quantity = this.buyOrder.getQuantity()-this.sellOrder.getQuantity();
+            if(quantity>0){
+                order = new Order(this.buyOrder,quantity);
+            } else{
+                order = new Order(this.sellOrder,-quantity);
+            }
+            return order;
+        }
+    }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
