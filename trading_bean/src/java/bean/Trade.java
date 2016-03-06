@@ -3,16 +3,16 @@ import java.util.Date;
 
 public class Trade {
 
-    private Order order;
+    private Order buyorder;
+    private Order sellorder;
     private Date tradeDate;
+    private int quantity;
 
-    public Trade() {
-       this.tradeDate = new Date();
-    }
 
-    // Setters
-    public void setOrder(Order order) {
-        this.order = order;
+    public Trade(Order buyorder,Order sellorder) {
+        this.buyorder = buyorder;
+        this.sellorder = sellorder;
+        this.tradeDate = new Date();
     }
 
     // Getters
@@ -21,8 +21,10 @@ public class Trade {
         return this.order.getSecurity();
     }
 
+
+
     public int getQuantity() {
-        return this.order.getQuantity();
+        return this.quantity;
     }
 
     public int getPrice() {

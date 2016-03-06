@@ -103,6 +103,7 @@ public class TradingPlace {
     	Order buyOrder = null;
     	Order sellOrder = null;
     	Order tempOrder;
+    	Trade trade;
     	for(int buy = 0;buy<security_orders.size();buy++){
     		tempOrder = security_orders.get(i);
     		if(buyOrder==null&&tempOrder.getType().equals("Buy")){
@@ -114,18 +115,31 @@ public class TradingPlace {
     				buyOrder = tempOrder;
     		}
     		if(possibleTrade(sellOrder,buyOrder)){
-    			///CONTINUE HERE TO TIIREED TO THIIINK
+    			if(sellOrder.getQuantity()==buyOrder.getQuantity()){
+    				trade = new Trade();
+    				trade.setOrder(buyOrder,sellOrder);
+    				security_orders.remove(Math.max(buy,sell));
+    				security_orders.remove(Math.min(buy,sell));
+    				return trade;
+    			} 
+
+
+
+    		} else{
+    			sellOrder = null;
     		}
     		}
+    		buyOrder = null;
 
     	}
+    	return null;
     }
 
     public boolean possibleTrade(Order sell,Order buy){
     	if(sell==null||buy==null){
     		return false;
     	}
-    	return ((sell.getQuantity()>=buy.getQuantity())&&(sell.getPrice()==buy.getPrice()));
+    	return ((sell.getQuantity()==buy.getQuantity())&&(sell.getPrice()==buy.getPrice()));
 
     }
 
