@@ -54,18 +54,14 @@
 			<%
 			ArrayList securities = trading_place.getSecurities();
 			pageContext.setAttribute("allSecurities", securities);
-
-			ArrayList orders = trading_place.getOrders();
-			pageContext.setAttribute("allOrders", securities);
-
 			%>
 
 
 			<div id="sidebar" class="col-xs-2">
 				<h4>All Securities</h4>
 
-				<c:forEach items="${allOrders}" var="order">
-				<br><c:out value="${order.type}" />
+				<c:forEach items="${allSecurities}" var="current">
+				<br><c:out value="${current.name}" />
 				</c:forEach>
 
 			</div>
@@ -74,7 +70,7 @@
 				<h3>Add a security</h3>
 				<form action="/trading_bean/TradeController">
 					<input type="hidden" name="action" value="addSecurity">
-					<input type="text" name="security"><br>
+					<input type="text" name="security"><br><br>
 					<button type="submit" id="user-btn" class="btn btn-primary">Add</button>
 				</form>
 
@@ -92,11 +88,11 @@
 				Buy: <input type="radio" name="buyOrSell" value="buy" checked>
 				Sell: <input type="radio" name="buyOrSell" value="sell"><br>
 				Price: <input type="text" name="price" value=""><br>
-				Amount: <input type="text" name="amount" value=""><br>
+				Amount: <input type="text" name="amount" value=""><br><br>
 				<button type="submit" class="btn btn-primary">Order</button>
 			</form>
 
-			<h3>Show finished trades for a security</h3>
+			<h3>Show orders and finished trades for a security</h3>
 			<form action="/trading_bean/TradeController">
 				<input type="hidden" name="action" value="viewTrades">
 				Security:
@@ -104,7 +100,7 @@
 					<c:forEach items="${allSecurities}" var="current">
 					<option value="${current.name}">${current.name}</option>
 					</c:forEach>
-				</select><br>
+				</select><br><br>
 				<button type="submit" class="btn btn-primary">Show</button>
 			</form>
 		</div>

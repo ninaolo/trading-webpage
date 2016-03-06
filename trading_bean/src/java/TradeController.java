@@ -31,12 +31,11 @@ public class TradeController extends HttpServlet {
 			out.println(ne.getMessage());
 		}
 
-
 		// NEW SESSION
 
 		HttpSession session = request.getSession();
 		
-		if(session.isNew()){
+		if(session.isNew()) {
 
 			bean.User u = new bean.User();
 			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
@@ -68,7 +67,9 @@ public class TradeController extends HttpServlet {
 
 		// CHECK ACTIONS
 
-		if(request.getParameter("action").equals("addSecurity") && request.getParameter("security") != "") {
+		String action = request.getParameter("action");
+
+		if(action != null && action.equals("addSecurity") && request.getParameter("security") != "") {
 			bean.User u = (bean.User)session.getAttribute("user");
 			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
 			bean.Security s = new bean.Security();
@@ -93,7 +94,7 @@ public class TradeController extends HttpServlet {
 
 		}
 		
-		if(request.getParameter("action").equals("addOrder") && request.getParameter("price") != "" && request.getParameter("amount") != "") {
+		if(action != null && action.equals("addOrder") && request.getParameter("price") != "" && request.getParameter("amount") != "") {
 		    // Kod för att lägga en köp eller säljorder
 		    // samt eventuellt skapa en trade
 		    bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
@@ -128,7 +129,7 @@ public class TradeController extends HttpServlet {
 
 		}
 
-		if(request.getParameter("action").equals("viewTrades")){
+		if(action != null && action.equals("viewTrades")) {
 		    // Kod för att lägga en köp eller säljorder
 
 			bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
@@ -146,12 +147,11 @@ public class TradeController extends HttpServlet {
 
 		out.close();
 
-
 		RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp");
 			try{
 				rd.forward(request, response);
 			}
-			catch(Exception e){
+			catch(Exception e) {
 				out.println(e.getMessage());
 			}
 

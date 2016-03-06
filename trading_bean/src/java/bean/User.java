@@ -1,26 +1,35 @@
 package bean;
 
-public class User{
+public class User {
 
     private String nickname;
     private String email;
+    private int id;
 
-    public User(){
+    public User() {
     }
 
-    public void setNickname(String s){
-	this.nickname = s;
+    public void setID(int id) {
+        this.id = id;
     }
 
-    public void setEmail(String s){
-	this.email = s;
+    public int getID() {
+        return this.id;
     }
 
-    public String getNickname(){
-	return nickname;
+    public void setNickname(String s) {
+	   this.nickname = s;
     }
 
-    public String getEmail(){
-	return email;
+    public void setEmail(String s) {
+	   this.email = s;
+    }
+
+    public String getNickname() {
+	   return nickname;
+    }
+
+    public String getEmail() {
+	   return email;
     }
 }

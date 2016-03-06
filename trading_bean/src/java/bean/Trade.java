@@ -3,48 +3,49 @@ import java.util.Date;
 
 public class Trade {
 
-    private Order buyorder;
-    private Order sellorder;
+    private Order buyOrder;
+    private Order sellOrder;
     private Date tradeDate;
     private int quantity;
 
-
-    public Trade(Order buyorder,Order sellorder) {
-        this.buyorder = buyorder;
-        this.sellorder = sellorder;
+    public Trade() {
         this.tradeDate = new Date();
+    }
+
+    // Setters
+    public void setOrders(Order buyOrder, Order sellOrder) {
+        this.buyOrder = buyOrder;
+        this.sellOrder = sellOrder;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     // Getters
 
     public Security getSecurity() {
-        return this.order.getSecurity();
+        return this.buyOrder.getSecurity();
     }
-
-
 
     public int getQuantity() {
         return this.quantity;
     }
 
     public int getPrice() {
-        return this.order.getPrice();
+        return this.buyOrder.getPrice();
     }
 
-    public User getUser() {
-        return this.order.getUser();
+    public User getBuyUser() {
+        return this.buyOrder.getUser();
+    }
+
+    public User getSellUser() {
+        return this.sellOrder.getUser();
     }
 
     public Date getDate() {
         return this.tradeDate;
-    }
-
-    public String getSecurityType() {
-        return this.order.getSecurity().getType();
-    }
-
-    public String getOrderType() {
-        return this.order.getType();
     }
          
 }

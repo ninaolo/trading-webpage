@@ -11,16 +11,17 @@ public class TradingPlace {
     //private ArrayList orders;
     //private ArrayList trades;
     private ArrayList securities;
-    private ArrayList users;
-    private HashMap<Security,ArrayList<Order>> orders;
-    private HashMap<Security,ArrayList<Trade>> trades;
+    private HashMap<Integer, User> users;
+    private Integer userIdCount = 0;
+    private HashMap<Security, ArrayList<Order>> orders;
+    private HashMap<Security, ArrayList<Trade>> trades;
 
 
     public TradingPlace() throws SQLException, NamingException {
-		orders = HashMap<Security,ArrayList<Order>>();
-		trades = HashMap<Security,ArrayList<Trade>>();
+		orders = new HashMap<Security,ArrayList<Order>>();
+		trades = new HashMap<Security,ArrayList<Trade>>();
 		securities = new ArrayList();
-		users = new ArrayList();
+		users = new HashMap<Integer, User>();
 
 		Context initCtx = new InitialContext();
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -33,17 +34,12 @@ public class TradingPlace {
 		    String name = rs.getString("name");
 		    //String amount = rs.getString("amount");
 		    Security security = new Security();
-		    orders.add(security,new ArrayList<Order>());
-		    trades.add(security,new ArrayList<Trade>());
+		    orders.put(security,new ArrayList<Order>());
+		    trades.put(security,new ArrayList<Trade>());
 		    security.setName(name);
 		    //p.setText(amount);
 		    securities.add(security);
 		}
-
-
-
-
-
 
 		rs.close();
 		stmt.close();
@@ -51,8 +47,10 @@ public class TradingPlace {
     }
 
 
-    public void addUser(User user){
-    	users.add(user);
+    public void addUser(User user) {
+    	userIdCount++; // Unique ID for everyone
+    	users.put(userIdCount, user);
+    	user.setID(userIdCount);
     }
     
     public void addSecurity(Security security) throws SQLException, NamingException {
@@ -73,33 +71,36 @@ public class TradingPlace {
 
     public void addOrder(Order order) throws SQLException, NamingException {
     	Security security = order.getSecurity();
-    	orders.get(security).add(order);
+    	orders.get(security).add(order); // nullpointer
 
     	Context initCtx = new InitialContext();
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/ninaolo");
 		Connection conn = ds.getConnection();
 		Statement stmt = conn.createStatement();
-		String sql = "";
+		String sql = "INSERT INTO orders (name, type, price, amount, uid) VALUES ('"
+            + order.getSecurity().getName() + "', '"
+            + order.getType() + "', "
+            + order.getPrice() + ", "
+            + order.getQuantity() + ", "
+            + order.getUser().getID() + ")";
 		stmt.executeUpdate(sql);
 		stmt.close();
 		conn.close();
     }
 
     public Security getSecurity(String name){
-    	for(Security s:securities){
-    		if(s.name.equals(name)){
+    	/*for(Security s : securities) {
+    		if(s.getName().equals(name)){
     			return s;
     		}
-    	}
+    	}*/
     	return null;
     }
 
 
-
-
     public Trade getPossibleTrade(Security security){
-    	ArrayList security_orders = getOrders(security);
+    	/*ArrayList security_orders = getOrders(security);
     	Order buyOrder = null;
     	Order sellOrder = null;
     	Order tempOrder;
@@ -123,15 +124,13 @@ public class TradingPlace {
     				return trade;
     			} 
 
-
-
     		} else{
     			sellOrder = null;
     		}
     		}
     		buyOrder = null;
 
-    	}
+    	}*/
     	return null;
     }
 
@@ -144,14 +143,8 @@ public class TradingPlace {
     }
 
 
-
-
-
-
-
-
     public void executeOrder(Order order) throws SQLException, NamingException {
-    	orders.add(order);
+    	/*orders.add(order);
     	Context initCtx = new InitialContext();
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/ninaolo");
@@ -160,7 +153,7 @@ public class TradingPlace {
 		String sql = "";
 		stmt.executeUpdate(sql);
 		stmt.close();
-		conn.close();
+		conn.close();*/
     }
 
 

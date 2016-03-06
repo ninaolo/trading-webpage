@@ -1,6 +1,6 @@
-use ninaolo; # Byt till din egen
+use ninaolo;
 
-drop table securities; # Radera om redan finns
+drop table securities;
 drop table orders;
 drop table trades;
 
