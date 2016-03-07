@@ -109,9 +109,30 @@
 		<h3><%=request.getParameter("showSecurity")%></h3><br>
 			<div id="orderbar">
 				<h4>Orders</h4>
+
+			<%
+			ArrayList orders = trading_place.getOrders(request.getParameter("showSecurity"));
+			pageContext.setAttribute("securityOrders", orders);
+
+			ArrayList trades = trading_place.getTrades(request.getParameter("showSecurity"));
+			pageContext.setAttribute("securityTrades", trades);
+			%>
+
+
+
+
+				<c:forEach items="${securityOrders}" var="current">
+				<br><c:out value="${current}" />
+				</c:forEach>
+
+
 			</div>
 			<div id="tradebar">
 				<h4>Trades</h4>
+
+				<c:forEach items="${securityTrades}" var="current">
+				<br><c:out value="${current}" />
+				</c:forEach>
 			</div>
 		</div>
 

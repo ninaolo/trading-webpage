@@ -98,6 +98,7 @@ public class TradeController extends HttpServlet {
 		    // Kod för att lägga en köp eller säljorder
 		    // samt eventuellt skapa en trade
 		    bean.TradingPlace t = (bean.TradingPlace)sc.getAttribute("trading_place");
+		    bean.User u = (bean.User)session.getAttribute("user");
 			String type = request.getParameter("buyOrSell");
 			String securityName = request.getParameter("security");
 			int price = Integer.parseInt(request.getParameter("price"));
@@ -111,6 +112,7 @@ public class TradeController extends HttpServlet {
 			o.setQuantity(amount);
 			o.setPrice(price);
 			o.setSecurity(s);
+			o.setUser(u);
 
 			try {
 				t.addOrder(o);

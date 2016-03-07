@@ -3,45 +3,49 @@ import java.util.Date;
 
 public class Trade {
 
-    private Order buyOrder;
-    private Order sellOrder;
+    private Security security;
     private Date tradeDate;
     private int quantity;
+    private User buyer;
+    private User seller;
+    private int price;
 
     public Trade() {
         this.tradeDate = new Date();
     }
 
-    // Setters
-    public void setOrders(Order buyOrder, Order sellOrder) {
-        this.buyOrder = buyOrder;
-        this.sellOrder = sellOrder;
+    public void setParameters(int price,int quantity,User buyer,User seller,Security security){
+        this.quantity = quantity;
+        this.buyer = buyer;
+        this.seller = seller;
+        this.security = security;
+        this.price = price;
+
     }
 
-    public Order getRest(){
-        if(this.buyOrder.getQuantity()==this.sellOrder.getQuantity()){
-            return null;
-        }
-        else{
-            Order order;
-            int quantity = this.buyOrder.getQuantity()-this.sellOrder.getQuantity();
-            if(quantity>0){
-                order = new Order(this.buyOrder,quantity);
-            } else{
-                order = new Order(this.sellOrder,-quantity);
-            }
-            return order;
-        }
+
+    @Override
+    public String toString(){
+        return this.security.getName()+" Q: "+this.quantity+" P: "+this.price+"\n"+"Buyer: "+buyer.getNickname()+"  Seller: "+buyer.getNickname();
+
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    public User getBuyer(){
+        return buyer;
+    }
+
+    public User getSeller(){
+        return seller;
+    }
+
     // Getters
 
     public Security getSecurity() {
-        return this.buyOrder.getSecurity();
+        return this.security;
     }
 
     public int getQuantity() {
@@ -49,15 +53,7 @@ public class Trade {
     }
 
     public int getPrice() {
-        return this.buyOrder.getPrice();
-    }
-
-    public User getBuyUser() {
-        return this.buyOrder.getUser();
-    }
-
-    public User getSellUser() {
-        return this.sellOrder.getUser();
+        return this.price;
     }
 
     public Date getDate() {

@@ -15,6 +15,7 @@ public class TradingPlace {
     private Integer userIdCount = 0;
     private HashMap<Security, ArrayList<Order>> orders;
     private HashMap<Security, ArrayList<Trade>> trades;
+    private User eric;
 
 
     public TradingPlace() throws SQLException, NamingException {
@@ -35,9 +36,22 @@ public class TradingPlace {
 		    //String amount = rs.getString("amount");
 		    Security security = new Security();
 		    security.setName(name);
+            security.setType("Stock");
 		    //p.setText(amount);
-		    securities.add(security);
+            addSecurity(security,true);
 		}
+
+
+        eric = new User();
+        eric.setNickname("Eric");
+        eric.setID(1337);
+        users.put(1337,eric);
+
+        //String sql = "SELECT id, name FROM users";
+        //ResultSet rs = stmt.executeQuery(sql);
+        //Enda User är Eric så länge...
+
+
 
         for(int i=0;i<securities.size();i++){
             Security s = securities.get(i);
@@ -51,9 +65,35 @@ public class TradingPlace {
                 tempOrder.setQuantity(Integer.parseInt(rs.getString("quantity")));
                 tempOrder.setPrice(Integer.parseInt(rs.getString("price")));
                 tempOrder.setType(rs.getString("type"));
+                tempOrder.setUser(eric);
                 temp.add(tempOrder);
             }
             orders.put(s,temp);
+
+            ArrayList<Trade> tempTrades = new ArrayList<Trade>();
+            Trade tempTrade;
+            sql = "SELECT name, type, price, amount, uid FROM orders WHERE name="+"'"+s.getName()+"'";
+            rs = stmt.executeQuery(sql);
+            int userId;
+
+            while(rs.next()){
+                tempTrade = new Trade();
+
+                userId = Integer.parseInt(rs.getString("buyer"));
+                User buyer = users.get(userId);
+                userId = Integer.parseInt(rs.getString("seller"));
+                User seller = users.get(userId);
+                //Trade date?
+                int price = Integer.parseInt(rs.getString("price"));
+                int quantity = Integer.parseInt(rs.getString("ammount"));
+                
+                tempTrade.setParameters(price,quantity,buyer,seller,s);
+                tempTrades.add(tempTrade);
+            }
+            trades.put(s,tempTrades);
+
+
+
         }
 
 		rs.close();
@@ -61,8 +101,11 @@ public class TradingPlace {
 		conn.close();
     }
 
-    public static void addAllOrders(){
 
+
+
+    public User getEric(){
+        return eric;
     }
 
 
@@ -71,9 +114,19 @@ public class TradingPlace {
     	users.put(userIdCount, user);
     	user.setID(userIdCount);
     }
+
+
+    public void addSecurity(Security security,boolean noSql) {
+        securities.add(security);
+        orders.put(security,new ArrayList<Order>());
+        trades.put(security,new ArrayList<Trade>());
+
+    }
     
     public void addSecurity(Security security) throws SQLException, NamingException {
 		securities.add(security);
+        orders.put(security,new ArrayList<Order>());
+        trades.put(security,new ArrayList<Trade>());
 		Context initCtx = new InitialContext();
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/ninaolo");
@@ -88,37 +141,112 @@ public class TradingPlace {
 		conn.close();
     }
 
-    public void addOrder(Order order) throws SQLException, NamingException {
-    	Security security = order.getSecurity();
-
-        ArrayList<Order> temp = orders.get(security);
-        temp.add(order);
-        orders.put(security,temp);
-
+    public void updateOrders(ArrayList<Order> array, Security security) throws SQLException, NamingException {
     	Context initCtx = new InitialContext();
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");
 		DataSource ds = (DataSource)envCtx.lookup("jdbc/ninaolo");
 		Connection conn = ds.getConnection();
 		Statement stmt = conn.createStatement();
-		String sql = "INSERT INTO orders (name, type, price, amount, uid) VALUES ('"
+
+        String sql = "DELETE FROM orders WHERE name="+security.getName();
+        stmt.executeUpdate(sql);
+
+        Order order;
+        for(int i = 0;i<array.size();i++){
+            order = array.get(i);
+		      sql = "INSERT INTO orders (name, type, price, amount, uid) VALUES ('"
             + order.getSecurity().getName() + "', '"
             + order.getType() + "', "
             + order.getPrice() + ", "
-            + order.getQuantity() + ")";
-        //    + order.getUser().getID() + ")";
-		stmt.executeUpdate(sql);
+            + order.getQuantity() + ","
+            + order.getUser().getID() + ")";
+            stmt.executeUpdate(sql);
+        }
 		stmt.close();
 		conn.close();
-
-
-        ArrayList<Trade> tempTrades = trades.get(security);
-        Trade trade = getPossibleTrade(security);
-        while(trade!=null){
-            tempTrades.add(trade);
-            trade = getPossibleTrade(security);
-        }
-        trades.put(security,tempTrades);
     }
+
+    public void updateTrades(ArrayList<Trade> array, Security security) throws SQLException, NamingException {
+        Context initCtx = new InitialContext();
+        Context envCtx = (Context) initCtx.lookup("java:comp/env");
+        DataSource ds = (DataSource)envCtx.lookup("jdbc/ninaolo");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        String sql = "DELETE FROM trades WHERE name="+security.getName();
+        stmt.executeUpdate(sql);
+        Trade trade;
+        for(int i = 0;i<array.size();i++){
+            trade = array.get(i);
+              sql = "INSERT INTO trades (name, price, amount, buyer,seller,dt) VALUES ('"
+            + trade.getSecurity().getName() + "', '"
+            + trade.getPrice() + ", "
+            + trade.getQuantity() + ","
+            + trade.getBuyer().getID() + ","
+            + trade.getSeller().getID() + ","
+            + trade.getDate() + ")";
+            stmt.executeUpdate(sql);
+        }
+        stmt.close();
+        conn.close();
+    }
+
+
+
+    public void addOrder(Order order) throws SQLException, NamingException {
+        Security security = order.getSecurity();
+        makeTrades(security,order);
+    }
+
+
+
+
+    public void makeTrades(Security security,Order order) throws SQLException, NamingException {
+        ArrayList<Order> security_orders = orders.get(security);
+        ArrayList<Trade> security_trades = trades.get(security);
+        String type = order.getType();
+        int price = order.getPrice();
+        int index = 0;
+        int quantity;
+        Order tempOrder;
+        while(order.getQuantity()>0&&index<security_orders.size()){
+            tempOrder = security_orders.get(index);
+            if((!tempOrder.getType().equals(type))&&tempOrder.getPrice()==price&&tempOrder.getQuantity()>0){
+                quantity = Math.min(tempOrder.getQuantity(),order.getQuantity());
+                User buyer;
+                User seller;
+                if(type.equals("Sell")){
+                    seller = order.getUser();
+                    buyer = tempOrder.getUser();
+                } else{
+                    seller = tempOrder.getUser();
+                    buyer = tempOrder.getUser();
+                }
+                Trade trade = new Trade();
+                trade.setParameters(price,quantity,buyer,seller,security);
+                security_trades.add(trade);
+
+                order.setQuantity(order.getQuantity()-quantity);
+                tempOrder.setQuantity(tempOrder.getQuantity()-quantity);
+            }
+            index++;
+        }
+        security_orders.add(order);
+        trades.put(security,security_trades);
+
+        for(int i = security_orders.size()-1;i>=0;i--){
+            tempOrder = security_orders.get(i);
+            if(tempOrder.getQuantity()<1){
+                security_orders.remove(i);
+            }
+        }
+        orders.put(security,security_orders);
+        //updateOrders(security_orders,security);
+        //updateTrades(security_trades,security);
+
+    }
+
+
 
     public Security getSecurity(String name){
     	for(int i = 0;i<securities.size();i++) {
@@ -131,65 +259,20 @@ public class TradingPlace {
     }
 
 
-    public Trade getPossibleTrade(Security security){
-    	ArrayList<Order> security_orders = orders.get(security);
-    	Order buyOrder = null;
-    	Order sellOrder = null;
-    	Order tempOrder;
-    	Trade trade;
-        int sell = -1;
-        int buy = -1;
-        for(int i=0;i<security_orders.size();i++){
-            if(security_orders.get(i).getType().equals("Sell")){
-                sell = i;
-            }
-            else{
-                buy = i;
-            }
-        }
-
-        if(sell==-1||buy==-1){
-            return null;
-        }
-
-        buyOrder = security_orders.get(buy);
-        sellOrder = security_orders.get(sell);
-        trade = new Trade();
-        trade.setOrders(buyOrder,sellOrder);
-        Order newOrder = trade.getRest();
-        security_orders.remove(Math.max(buy,sell));
-        security_orders.remove(Math.min(buy,sell));
-        if(newOrder!=null){
-            security_orders.add(newOrder);
-        }
-        orders.put(security,security_orders);
-        return trade;
-    }
-
-
-    public void executeOrder(Order order) throws SQLException, NamingException {
-    	/*orders.add(order);
-    	Context initCtx = new InitialContext();
-		Context envCtx = (Context) initCtx.lookup("java:comp/env");
-		DataSource ds = (DataSource)envCtx.lookup("jdbc/ninaolo");
-		Connection conn = ds.getConnection();
-		Statement stmt = conn.createStatement();
-		String sql = "";
-		stmt.executeUpdate(sql);
-		stmt.close();
-		conn.close();*/
-    }
-
-
-
-
     public ArrayList getSecurities() {
-		return securities;
+        return securities;
     }
 
 
-    public ArrayList getOrders(Security security){
-    	return orders.get(security);
+    public ArrayList<Order> getOrders(String str){
+        Security security = getSecurity(str);
+        return orders.get(security);
+    }
+
+    public ArrayList<Trade> getTrades(String str){
+        Security security = getSecurity(str);
+        return trades.get(security);
+
     }
     
        

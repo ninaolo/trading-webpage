@@ -18,7 +18,11 @@ public class Order {
         this.user = order.user;
     }
 
-    // Setters
+
+    @Override
+    public String toString(){
+        return this.security.getName()+" "+this.type+"\n"+user.getNickname()+" Q: "+this.quantity+" P: "+this.price;
+    }
 
     public void setType(String type) {
         this.type = type;

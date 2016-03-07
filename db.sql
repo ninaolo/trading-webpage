@@ -12,11 +12,11 @@ create table securities (
 
 create table orders (
 	id int NOT NULL AUTO_INCREMENT,
-       name varchar(64) NOT NULL UNIQUE,
+       name varchar(64),
        type varchar(64),
        price float,
        amount int,
-       uid varchar(64),
+       uid int,
 	PRIMARY KEY (id)
 );
 
@@ -26,7 +26,15 @@ create table trades (
        price float,
        amount int,
        dt datetime,
-       buyer varchar(64),
-       seller varchar(64),
+       buyer int,
+       seller int,
 	PRIMARY KEY (id)
+);
+
+
+create table users (
+       id int NOT NULL AUTO_INCREMENT,
+       name varchar(64),
+       email varchar(64),
+       PRIMARY KEY (id)
 );
