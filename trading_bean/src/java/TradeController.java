@@ -50,11 +50,13 @@ public class TradeController extends HttpServlet {
             }
         }
 
-        if (request.getParameter("email") != null) {
+        if (request.getParameter("email") != null && request.getParameter("nickname") != null) {
             bean.User u = (bean.User) session.getAttribute("user");
             u.setNickname(request.getParameter("nickname"));
             u.setEmail(request.getParameter("email"));
             RequestDispatcher rd = sc.getRequestDispatcher("/Forum_view.jsp");
+            bean.TradingPlace t = (bean.TradingPlace) sc.getAttribute("trading_place");
+            t.printUsers();
             try {
                 rd.forward(request, response);
             } catch (Exception e) {
@@ -107,7 +109,6 @@ public class TradeController extends HttpServlet {
             o.setSecurity(s);
             o.setQuantity(amount);
             o.setPrice(price);
-            o.setSecurity(s);
             o.setUser(u);
 
             try {

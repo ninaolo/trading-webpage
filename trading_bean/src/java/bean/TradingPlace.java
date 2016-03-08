@@ -8,7 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.PrintWriter;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TradingPlace {
 
@@ -21,11 +24,20 @@ public class TradingPlace {
     private HashMap<Security, ArrayList<Trade>> trades;
     private User eric;
 
-    private PrintWriter logFile;
+    private BufferedWriter log;
 
 
-    public TradingPlace() throws SQLException, NamingException, FileNotFoundException, UnsupportedEncodingException {
-        logFile = new PrintWriter("log-file.txt", "UTF-8");
+    public TradingPlace() throws IOException, SQLException, NamingException {
+
+        File file = new File("/Users/Nina/git/trading-webpage/logfile.txt");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        log = new BufferedWriter(fw);
+        log.write("starting\n");
+        log.flush();
 
         orders = new HashMap<Security, ArrayList<Order>>();
         trades = new HashMap<Security, ArrayList<Trade>>();
@@ -48,18 +60,18 @@ public class TradingPlace {
             addSecurity(security, true);
         }
 
-        sql = "SELECT name, manualid, FROM users";
-        rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            String name = rs.getString("nickname");
-            int manualid = Integer.parseInt(rs.getString("manualid"));
-            User user = new User();
-            user.setNickname(name);
-            user.setID(manualid);
-            users.put(manualid,user);
-        }
+        // ??
+        /*
+        eric = new User();
+        eric.setNickname("Eric");
+        eric.setID(1337);
+        users.put(1337, eric);*/
 
+        //String sql = "SELECT id, name FROM users";
+        //ResultSet rs = stmt.executeQuery(sql);
+        //Enda User är Eric så länge...
 
+        // Get orders & trades from the database and match with securities
         for (int i = 0; i < securities.size(); i++) {
             Security s = securities.get(i);
             sql = "SELECT name, type, price, amount, uid FROM orders WHERE name='" + s.getName() + "'";
@@ -75,7 +87,7 @@ public class TradingPlace {
                 tempOrder.setType(rs.getString("type"));
                 tempOrder.setUser(users.get(Integer.parseInt(rs.getString("uid"))));
 
-                logFile.println(s.getName() + ": user " + Integer.parseInt(rs.getString("uid")));
+                //logFile.println(s.getName() + ": user " + Integer.parseInt(rs.getString("uid")));
 
                 temp.add(tempOrder);
             }
@@ -102,9 +114,6 @@ public class TradingPlace {
 
         }
 
-
-
-
         rs.close();
         stmt.close();
         conn.close();
@@ -116,27 +125,19 @@ public class TradingPlace {
     }
 
 
-    public void addUser(User user) throws SQLException, NamingException {
+    public void addUser(User user) {
         userIdCount++; // Unique ID for everyone
         users.put(userIdCount, user);
         user.setID(userIdCount);
-        Context initCtx = new InitialContext();
-        Context envCtx = (Context) initCtx.lookup("java:comp/env");
-        DataSource ds = (DataSource) envCtx.lookup("jdbc/ninaolo");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-        String sql;
-        String name = user.getNickname();
-        //String text=order.getText();
-        sql = "INSERT INTO users (name, manualid) VALUES ('" + name + ","+userIdCount+"')";
-        stmt.executeUpdate(sql);
-        stmt.close();
-        conn.close();
-        for (Integer uid : users.keySet()) {
-            logFile.println(uid + " " + users.get(uid));
-        }
     }
 
+    public void printUsers() throws IOException {
+        log.write("\n\nALL USERS:\n");
+        for (Integer uid : users.keySet()) {
+            log.write("\n" + uid + ": NAME = " + users.get(uid).getNickname());
+        }
+        log.flush();
+    }
 
     public void addSecurity(Security security, boolean noSql) {
         securities.add(security);
@@ -181,16 +182,12 @@ public class TradingPlace {
                     + order.getType() + "', "
                     + order.getPrice() + ", "
                     + order.getQuantity() + ", "
-                    + 1 + ")";
-                    //+ order.getUser().getID() + ")";
+                    + order.getUser().getID() + ")";
             stmt.executeUpdate(sql);
         }
         stmt.close();
         conn.close();
     }
-
-
-
 
     public void updateTrades(ArrayList<Trade> array, Security security) throws SQLException, NamingException {
         Context initCtx = new InitialContext();
@@ -218,7 +215,9 @@ public class TradingPlace {
     }
 
 
-    public void addOrder(Order order) throws SQLException, NamingException {
+    public void addOrder(Order order) throws SQLException, NamingException, IOException {
+        log.write("\nADDING ORDER: " + order.toString() + "\n");
+        log.flush();
         Security security = order.getSecurity();
         makeTrades(security, order);
     }

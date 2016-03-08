@@ -1,0 +1,34 @@
+starting
+
+
+ALL USERS:
+
+1: NAME = ko
+
+ALL USERS:
+
+1: NAME = lal
+ADDING ORDER: Ericsson buy
+1: lal Q: 5 P: 4
+
+ADDING ORDER: Ericsson buy
+1: lal Q: 44 P: 55
+
+
+ALL USERS:
+
+1: NAME = lal
+2: NAME = nummertva
+
+ALL USERS:
+
+1: NAME = lal
+2: NAME = two
+ADDING ORDER: Google buy
+2: two Q: 5 P: 55
+
+ADDING ORDER: Ericsson sell
+1: lal Q: 1 P: 4
+
+ADDING ORDER: Ericsson sell
+1: lal Q: 1 P: 4
