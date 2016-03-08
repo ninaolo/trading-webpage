@@ -3,21 +3,18 @@ starting
 
 ALL USERS:
 
-1: NAME = chrome
+1: NAME = safari
 
 ALL USERS:
 
-1: NAME = chrome
+1: NAME = safari
 
 ALL USERS:
 
-1: NAME = chrome
-2: NAME = safari
+1: NAME = safari
+2: NAME = chrome
 
 ALL USERS:
 
-1: NAME = chrome
-2: NAME = safari
-ADDING ORDER: Ericsson buy: [1]chrome Q: 5 P: 4
-
-ADDING ORDER: Ericsson sell: [2]safari Q: 1 P: 4
+1: NAME = safari
+2: NAME = chrome

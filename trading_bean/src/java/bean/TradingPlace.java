@@ -76,7 +76,9 @@ public class TradingPlace {
                 tempOrder.setPrice(Integer.parseInt(rs.getString("price")));
                 tempOrder.setType(rs.getString("type"));
                 tempOrder.setUser(users.get(Integer.parseInt(rs.getString("uid"))));
-                temp.add(tempOrder);
+                if(tempOrder.getUser() != null) {
+                    temp.add(tempOrder);
+                }
             }
             orders.put(s, temp);
 
@@ -95,7 +97,9 @@ public class TradingPlace {
                 int quantity = Integer.parseInt(rs.getString("amount"));
 
                 tempTrade.setParameters(price, quantity, buyer, seller, s);
-                tempTrades.add(tempTrade);
+                if(tempTrade.getBuyer() != null && tempTrade.getSeller() != null ) {
+                    tempTrades.add(tempTrade);
+                }
             }
             trades.put(s, tempTrades);
 
@@ -164,13 +168,15 @@ public class TradingPlace {
         Order order;
         for (int i = 0; i < array.size(); i++) {
             order = array.get(i);
-            sql = "INSERT INTO orders (name, type, price, amount, uid) VALUES ('"
-                    + order.getSecurity().getName() + "', '"
-                    + order.getType() + "', "
-                    + order.getPrice() + ", "
-                    + order.getQuantity() + ", "
-                    + order.getUser().getID() + ")";
-            stmt.executeUpdate(sql);
+            if (order.getUser() != null) {
+                sql = "INSERT INTO orders (name, type, price, amount, uid) VALUES ('"
+                        + order.getSecurity().getName() + "', '"
+                        + order.getType() + "', "
+                        + order.getPrice() + ", "
+                        + order.getQuantity() + ", "
+                        + order.getUser().getID() + ")";
+                stmt.executeUpdate(sql);
+            }
         }
         stmt.close();
         conn.close();
