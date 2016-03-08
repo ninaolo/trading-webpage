@@ -237,12 +237,12 @@ public class TradingPlace {
                 quantity = Math.min(tempOrder.getQuantity(), order.getQuantity());
                 User buyer;
                 User seller;
-                if (type.equals("Sell")) {
+                if (type.equals("sell")) {
                     seller = order.getUser();
                     buyer = tempOrder.getUser();
                 } else {
                     seller = tempOrder.getUser();
-                    buyer = tempOrder.getUser();
+                    buyer = order.getUser();
                 }
                 Trade trade = new Trade();
                 trade.setParameters(price, quantity, buyer, seller, security);

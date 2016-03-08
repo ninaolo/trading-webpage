@@ -105,7 +105,7 @@
 			</form>
 		</div>
 
-		<div class="col-xs-2 col-xs-offset-2">
+		<div class="col-xs-3 col-xs-offset-1">
 		<h3><%=request.getParameter("showSecurity")%></h3><br>
 			<div id="orderbar">
 				<h4>Orders</h4>
