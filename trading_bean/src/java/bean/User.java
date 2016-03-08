@@ -18,18 +18,18 @@ public class User {
     }
 
     public void setNickname(String s) {
-	   this.nickname = s;
+        this.nickname = s;
     }
 
     public void setEmail(String s) {
-	   this.email = s;
+        this.email = s;
     }
 
     public String getNickname() {
-	   return nickname;
+        return nickname;
     }
 
     public String getEmail() {
-	   return email;
+        return email;
     }
 }

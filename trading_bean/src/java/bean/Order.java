@@ -1,16 +1,17 @@
 package bean;
 
 public class Order {
-    
+
     private Security security;
     private int quantity;
     private int price;
     private User user;
     private String type;
 
-    public Order() {}
+    public Order() {
+    }
 
-    public Order(Order order,int quantity){
+    public Order(Order order, int quantity) {
         this.type = order.type;
         this.security = order.security;
         this.quantity = quantity;
@@ -20,8 +21,8 @@ public class Order {
 
 
     @Override
-    public String toString(){
-        return this.security.getName()+" "+this.type+"\n"+user.getNickname()+" Q: "+this.quantity+" P: "+this.price;
+    public String toString() {
+        return this.security.getName() + " " + this.type + "\n" + user.getNickname() + " Q: " + this.quantity + " P: " + this.price;
     }
 
     public void setType(String type) {
@@ -47,23 +48,23 @@ public class Order {
     // Getters
 
     public Security getSecurity() {
-    	return this.security;
+        return this.security;
     }
 
     public int getQuantity() {
-    	return this.quantity;
+        return this.quantity;
     }
 
     public int getPrice() {
-    	return this.price;
+        return this.price;
     }
 
     public User getUser() {
-    	return this.user;
+        return this.user;
     }
 
     public String getType() {
         return this.type;
     }
-       
+
 }
