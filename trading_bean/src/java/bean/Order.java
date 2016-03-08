@@ -22,7 +22,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return this.security.getName() + " " + this.type + "\n" + user.getID() + ": " + user.getNickname() + " Q: " + this.quantity + " P: " + this.price;
+        return this.security.getName() + " " + this.type + ": [" + user.getID() + "]" + user.getNickname() + " Q: " + this.quantity + " P: " + this.price;
     }
 
     public void setType(String type) {

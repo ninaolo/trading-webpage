@@ -46,6 +46,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href=""><%=user.getNickname()%></a></li>
 							<li><a href=""><%=user.getEmail()%></a></li>
+							<li><a href=""><%=user.getID()%></a></li>
 						</ul>
 					</div>
 				</div>

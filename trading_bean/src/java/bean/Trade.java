@@ -1,4 +1,5 @@
 package bean;
+
 import java.util.Date;
 
 public class Trade {
@@ -14,7 +15,7 @@ public class Trade {
         this.tradeDate = new Date();
     }
 
-    public void setParameters(int price,int quantity,User buyer,User seller,Security security){
+    public void setParameters(int price, int quantity, User buyer, User seller, Security security) {
         this.quantity = quantity;
         this.buyer = buyer;
         this.seller = seller;
@@ -25,8 +26,8 @@ public class Trade {
 
 
     @Override
-    public String toString(){
-        return this.security.getName()+" Q: "+this.quantity+" P: "+this.price+"\n"+"Buyer: "+buyer.getNickname()+"  Seller: "+buyer.getNickname();
+    public String toString() {
+        return this.security.getName() + " Q: " + this.quantity + " P: " + this.price + "Buyer: " + buyer.getNickname() + "  Seller: " + seller.getNickname();
 
     }
 
@@ -34,11 +35,11 @@ public class Trade {
         this.quantity = quantity;
     }
 
-    public User getBuyer(){
+    public User getBuyer() {
         return buyer;
     }
 
-    public User getSeller(){
+    public User getSeller() {
         return seller;
     }
 
@@ -59,5 +60,5 @@ public class Trade {
     public Date getDate() {
         return this.tradeDate;
     }
-         
+
 }

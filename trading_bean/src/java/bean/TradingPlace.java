@@ -50,6 +50,7 @@ public class TradingPlace {
         DataSource ds = (DataSource) envCtx.lookup("jdbc/ninaolo");
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
+
         String sql = "SELECT id, name FROM securities";
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
@@ -59,17 +60,6 @@ public class TradingPlace {
             security.setType("Stock");
             addSecurity(security, true);
         }
-
-        // ??
-        /*
-        eric = new User();
-        eric.setNickname("Eric");
-        eric.setID(1337);
-        users.put(1337, eric);*/
-
-        //String sql = "SELECT id, name FROM users";
-        //ResultSet rs = stmt.executeQuery(sql);
-        //Enda User är Eric så länge...
 
         // Get orders & trades from the database and match with securities
         for (int i = 0; i < securities.size(); i++) {
@@ -86,9 +76,6 @@ public class TradingPlace {
                 tempOrder.setPrice(Integer.parseInt(rs.getString("price")));
                 tempOrder.setType(rs.getString("type"));
                 tempOrder.setUser(users.get(Integer.parseInt(rs.getString("uid"))));
-
-                //logFile.println(s.getName() + ": user " + Integer.parseInt(rs.getString("uid")));
-
                 temp.add(tempOrder);
             }
             orders.put(s, temp);
@@ -201,13 +188,12 @@ public class TradingPlace {
         Trade trade;
         for (int i = 0; i < array.size(); i++) {
             trade = array.get(i);
-            sql = "INSERT INTO trades (name, price, amount, buyer, seller, dt) VALUES ('"
+            sql = "INSERT INTO trades (name, price, amount, buyer, seller) VALUES ('"
                     + trade.getSecurity().getName() + "', "
                     + trade.getPrice() + ", "
                     + trade.getQuantity() + ", "
                     + trade.getBuyer().getID() + ", "
-                    + trade.getSeller().getID() + ", "
-                    + trade.getDate() + ")";
+                    + trade.getSeller().getID() + ")";
             stmt.executeUpdate(sql);
         }
         stmt.close();
