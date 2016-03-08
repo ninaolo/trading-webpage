@@ -36,5 +36,6 @@ create table users (
        id int NOT NULL AUTO_INCREMENT,
        name varchar(64),
        email varchar(64),
+       manualid int,
        PRIMARY KEY (id)
 );

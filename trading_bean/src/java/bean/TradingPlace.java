@@ -48,18 +48,18 @@ public class TradingPlace {
             addSecurity(security, true);
         }
 
-        // ??
-        /*
-        eric = new User();
-        eric.setNickname("Eric");
-        eric.setID(1337);
-        users.put(1337, eric);*/
+        sql = "SELECT name, manualid, FROM users";
+        rs = stmt.executeQuery(sql);
+        while (rs.next()) {
+            String name = rs.getString("nickname");
+            int manualid = Integer.parseInt(rs.getString("manualid"));
+            User user = new User();
+            user.setNickname(name);
+            user.setID(manualid);
+            users.put(manualid,user);
+        }
 
-        //String sql = "SELECT id, name FROM users";
-        //ResultSet rs = stmt.executeQuery(sql);
-        //Enda User är Eric så länge...
 
-        // Get orders & trades from the database and match with securities
         for (int i = 0; i < securities.size(); i++) {
             Security s = securities.get(i);
             sql = "SELECT name, type, price, amount, uid FROM orders WHERE name='" + s.getName() + "'";
@@ -102,6 +102,9 @@ public class TradingPlace {
 
         }
 
+
+
+
         rs.close();
         stmt.close();
         conn.close();
@@ -113,11 +116,22 @@ public class TradingPlace {
     }
 
 
-    public void addUser(User user) {
+    public void addUser(User user) throws SQLException, NamingException {
         userIdCount++; // Unique ID for everyone
         users.put(userIdCount, user);
         user.setID(userIdCount);
-        logFile.println("USERS");
+        Context initCtx = new InitialContext();
+        Context envCtx = (Context) initCtx.lookup("java:comp/env");
+        DataSource ds = (DataSource) envCtx.lookup("jdbc/ninaolo");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        String sql;
+        String name = user.getNickname();
+        //String text=order.getText();
+        sql = "INSERT INTO users (name, manualid) VALUES ('" + name + ","+userIdCount+"')";
+        stmt.executeUpdate(sql);
+        stmt.close();
+        conn.close();
         for (Integer uid : users.keySet()) {
             logFile.println(uid + " " + users.get(uid));
         }
@@ -174,6 +188,9 @@ public class TradingPlace {
         stmt.close();
         conn.close();
     }
+
+
+
 
     public void updateTrades(ArrayList<Trade> array, Security security) throws SQLException, NamingException {
         Context initCtx = new InitialContext();
